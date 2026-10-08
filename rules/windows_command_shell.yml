@@ -1,0 +1,27 @@
+title: Detection Lab - Windows Command Shell Execution
+id: 7c8e6c2b-6f47-4c46-9b7d-8d84b6d41d11
+status: experimental
+description: Detects execution of the Windows Command Shell for detection engineering lab validation.
+author: BL
+date: 2026-10-07
+
+logsource:
+    category: process_creation
+    product: windows
+
+detection:
+    selection:
+        Image|endswith: '\cmd.exe'
+    condition: selection
+
+falsepositives:
+    - Legitimate system administration
+    - User troubleshooting
+    - Software installation scripts
+    - Automated management tasks
+
+level: low
+
+tags:
+    - attack.execution
+    - attack.t1059.003

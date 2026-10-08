@@ -1,0 +1,28 @@
+title: Detection Lab - Member Added to Local Security Group
+id: a542e83c-c25f-42da-a1fe-64cd50ae2605
+status: experimental
+description: Detects a member being added to a Windows security-enabled local group.
+author: Your Name
+date: 2026-10-07
+
+logsource:
+    product: windows
+    service: security
+
+detection:
+    selection:
+        EventID: 4732
+    condition: selection
+
+falsepositives:
+    - Legitimate administrator activity
+    - IT provisioning
+    - Authorized privilege changes
+    - Software installation or management activity
+
+level: medium
+
+tags:
+    - attack.persistence
+    - attack.privilege-escalation
+    - attack.t1098.007

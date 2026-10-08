@@ -1,0 +1,33 @@
+
+title: Detection Lab - Windows Local Account Creation
+id: 5c3fa6c1-944e-45e6-a2d9-43f4c68de401
+status: experimental
+description: Detects account creation events in Windows Security logs. Intended for testing local account creation on a standalone Windows lab machine.
+author: BL
+date: 2026-10-07
+
+logsource:
+    product: windows
+    service: security
+
+detection:
+    selection:
+        EventID: 4720
+    condition: selection
+
+fields:
+    - TargetUserName
+    - SubjectUserName
+    - TargetSid
+    - SubjectLogonId
+
+falsepositives:
+    - Legitimate user onboarding
+    - Authorized IT administration
+    - Application account provisioning
+
+level: medium
+
+tags:
+    - attack.persistence
+    - attack.t1136.001

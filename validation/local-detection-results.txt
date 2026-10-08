@@ -1,0 +1,12 @@
+
+=== DETECTION LAB VALIDATION ===
+
+DET-001 PowerShell Execution: MATCH (1 events)
+DET-002 Command Shell: MATCH (1 events)
+DET-003 Failed Logon: MATCH (8 events)
+DET-004 Account Creation: MATCH (6 events)
+DET-005 Group Membership Change: MATCH (11 events)
+DET-006 PowerShell Network Connection: MATCH (1 events)
+
+Note: This tests equivalent event-field conditions.
+It does not execute the Sigma YAML or Splunk SPL.

@@ -1,0 +1,28 @@
+title: Detection Lab - Windows Failed Logon
+id: 3b74ed7a-9fc5-4dab-b68d-bd237362cc21
+status: experimental
+description: Detects Windows failed logon events for authentication monitoring and detection engineering lab validation.
+author: BL
+date: 2026-10-07
+
+logsource:
+    product: windows
+    service: security
+
+detection:
+    selection:
+        EventID: 4625
+    condition: selection
+
+falsepositives:
+    - User mistyped password
+    - Expired credentials
+    - Cached credentials
+    - Misconfigured service accounts
+    - Automated applications using old credentials
+
+level: low
+
+tags:
+    - attack.credential-access
+    - attack.t1110.001

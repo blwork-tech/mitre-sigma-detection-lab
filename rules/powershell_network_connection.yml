@@ -1,0 +1,30 @@
+title: Detection Lab - PowerShell Network Connection
+id: f72438a1-d08a-435b-bdf8-c7b056af9606
+status: experimental
+description: Detects outbound network connections initiated by PowerShell.
+author: Your Name
+date: 2026-10-07
+
+logsource:
+    category: network_connection
+    product: windows
+
+detection:
+    selection:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    condition: selection
+
+falsepositives:
+    - Administrative PowerShell scripts
+    - Software management activity
+    - Cloud administration
+    - Legitimate API requests
+    - Automated system maintenance
+
+level: low
+
+tags:
+    - attack.execution
+    - attack.t1059.001
